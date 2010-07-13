@@ -1,2 +1,4 @@
 .DS_Store
 .svn
+pkg
+nbrew-simple_access_control.gemspec

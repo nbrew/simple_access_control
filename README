@@ -38,7 +38,7 @@ Create the following migration:
 In your User model, you must have:
 
   has_and_belongs_to_many :roles
-  
+
 In your Roles model, you must have:
 
   has_and_belongs_to_many :users
@@ -74,7 +74,7 @@ The following approach should work:
   unless @user.roles.any? { |r| r.title == 'user' }
     @user.roles << Role.find_by_title('user')
   end
-  @user.save  
+  @user.save
 
 [At this point you have two options: a real or virtual anonymous account]
 
@@ -133,7 +133,7 @@ In your views, you can use the following:
   <% restrict_to 'admin || moderator' do %>
     <%= link_to "Admin Area", admin_area_url %>
   <% end %>
-  
+
 AND
 
   <%= link_to("Admin Area", admin_area_url) if has_permission?('admin || moderator') %>
@@ -149,7 +149,7 @@ controllers to customise their response. For example:
     logger.info("[authentication] Permission granted to %s at %s for %s" %
       [(logged_in? ? current_user.login : 'guest'), Time.now, request.request_uri])
   end
-  
+
   def permission_denied
     logger.info("[authentication] Permission denied to %s at %s for %s" %
       [(logged_in? ? current_user.login : 'guest'), Time.now, request.request_uri])
